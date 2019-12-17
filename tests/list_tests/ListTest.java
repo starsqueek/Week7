@@ -2,18 +2,20 @@ package list_tests;
 
 import linkedList.list.List;
 import linkedList.list.ListAccessError;
+import linkedList.list.SingleListLink;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 import java.util.Random;
 
+import static org.junit.jupiter.api.Assertions.fail;
+
 public class ListTest<T> {
 
     @Test
-    void testList() throws ListAccessError {
-        List<T> testlist = new List<T>();
+    void Listtest(int limit) throws ListAccessError {
+        List<T> testlist = new SingleListLink<T>();
 
-        int limit = 5;
         Random rand = new Random();
         ArrayList arrayl = new ArrayList();
         for(int index=0;index<limit;index++){
@@ -23,8 +25,19 @@ public class ListTest<T> {
         for(int i=0;i<limit;i++){
             testlist.add(i,array[i]);
         }
-        System.out.println(testlist.toString());
+        System.out.println(testlist.get(0).toString());
+        if(testlist.get(0) != array[0]){
+            fail("Object not successfully added to list.");
+        }
     }
 
 
+    @Test
+    void testListSize1(){
+        try {
+            Listtest(1);
+        } catch (ListAccessError listAccessError) {
+            listAccessError.printStackTrace();
+        }
+    }
 }

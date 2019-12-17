@@ -43,7 +43,6 @@ public class SingleListLink<T> extends BasicList<SingleLinkNode<T>,T> implements
      */
     @Override
     public void add(int index, T value) throws ListAccessError {
-        System.out.println("A");
         if (isEmpty()) {
             if(index == 0){
                 setRoot(new SingleLinkNode<T>(value));
@@ -54,16 +53,8 @@ public class SingleListLink<T> extends BasicList<SingleLinkNode<T>,T> implements
         }
         else {
             ListNode<T> currentNode = getRoot();
-            while (index != 0 && currentNode != null) {
-                currentNode = currentNode.getNext();
-                index--;
-            }
-            if (currentNode == null) {
-                throw new ListAccessError("Cannot get node.  Not enough nodes in the list.");
-            }
-            else {
-                currentNode = new SingleLinkNode<T>(value);
-            }
+            currentNode.getNext();
+            currentNode = new SingleLinkNode<T>(value);
         }
     }
 
