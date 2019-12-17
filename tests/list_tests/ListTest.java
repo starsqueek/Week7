@@ -2,47 +2,28 @@ package list_tests;
 
 import linkedList.list.List;
 import linkedList.list.ListAccessError;
-import linkedList.list.Stack;
 import org.junit.jupiter.api.Test;
 
-import java.util.LinkedList;
+import java.util.ArrayList;
+import java.util.Random;
 
 public class ListTest<T> {
 
     @Test
     void testList() throws ListAccessError {
-        List<T> testlist = new List<T>() {
-            @Override
-            public boolean isEmpty() {
-                return false;
-            }
-
-            @Override
-            public void add(int index, T value) throws ListAccessError {
-
-            }
-
-            @Override
-            public T remove(int index) throws ListAccessError {
-                return null;
-            }
-
-            @Override
-            public T get(int index) throws ListAccessError {
-                return null;
-            }
-        };
+        List<T> testlist = new List<T>();
 
         int limit = 5;
-        for(int i=0;i<limit;i++){
-            System.out.println(testlist);
-            testlist.add(0,8);
-            System.out.println(testlist);
-            testlist.add(0,94);
-            testlist.add(0,12);
-            System.out.println(testlist);
+        Random rand = new Random();
+        ArrayList arrayl = new ArrayList();
+        for(int index=0;index<limit;index++){
+            arrayl.add(rand.nextInt((50 - 0) + 1) + 0);
         }
-        System.out.println(testlist);
+        T[] array = (T[]) arrayl.toArray((T[]) new Comparable[arrayl.size()]);
+        for(int i=0;i<limit;i++){
+            testlist.add(i,array[i]);
+        }
+        System.out.println(testlist.toString());
     }
 
 
